@@ -13,6 +13,8 @@ const testEpisode = {
     runtime:1
 }
 
+
+
 test("renders without error", () => { 
     render(<Episode episode={testEpisode}/>)
 });
@@ -25,4 +27,10 @@ test("renders the summary test passed as prop", () => {
     expect(summary).toHaveTextContent('test summary')
 });
 
-test("renders default image when image is not defined", () => { });
+test("renders default image when image is not defined", () => {
+    render(<Episode episode={testEpisode} />);
+    const episodeImage = screen.queryByAltText('https://i.ibb.co/2FsfXqM/stranger-things.png');
+    expect(episodeImage).toBeInTheDocument();
+  });
+    
+
